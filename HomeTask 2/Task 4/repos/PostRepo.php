@@ -39,6 +39,11 @@ class PostRepo extends Repository {
 		}
 	}
 
+	/**
+	 * changePost -- изменение поста
+	 *
+	 * @return void
+	 */
 	public function changePost() {
 		if (!empty($_POST && !empty($_GET))) {
 			$this->errors = Post::validate($_POST);
@@ -55,6 +60,12 @@ class PostRepo extends Repository {
 		}
 	}
 
+	/**
+	 * getPostById -- получения поста по id
+	 *
+	 * @param  int $id Идентификатор поста
+	 * @return void
+	 */
 	public function getPostById($id) {
 		return $this->db->row("SELECT title, content, to_char(date, 'DD.MM.YYYY') AS date FROM posts WHERE id=:id", ['id' => $id])[0];
 	}
