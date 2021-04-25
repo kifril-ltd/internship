@@ -19,7 +19,7 @@ class Db {
 	 * @param  array $params Параметры передаваемые в SQL запрос
 	 * @return stmt
 	 */
-	public function query($sql, $params = []) {
+	public function query(string $sql, array $params = []) {
 		$stmt = $this->db->prepare($sql);
 		if (!empty($params)) {
 			foreach ($params as $key => $val) {
@@ -42,7 +42,7 @@ class Db {
 	 * @param  array $params Параметры передаваемые в SQL запрос
 	 * @return array
 	 */
-	public function row($sql, $params = []) {
+	public function row(string $sql, array $params = []) {
 		$result = $this->query($sql, $params);
 		return $result->fetchAll(PDO::FETCH_ASSOC);
 	}
